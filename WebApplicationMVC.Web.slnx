@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="WebApplicationMVC.Application/WebApplicationMVC.Application.csproj" />
+  <Project Path="WebApplicationMVC.Domain/WebApplicationMVC.Domain.csproj" />
+  <Project Path="WebApplicationMVC.Infrastructure/WebApplicationMVC.Infrastructure.csproj" />
+  <Project Path="WebApplicationMVC.Web/WebApplicationMVC.Web.csproj" />
+</Solution>
