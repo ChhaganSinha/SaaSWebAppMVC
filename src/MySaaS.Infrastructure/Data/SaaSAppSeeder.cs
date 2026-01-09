@@ -62,6 +62,10 @@ public static class SaaSAppSeeder
         {
             await roleManager.CreateAsync(new IdentityRole(RoleNames.TenantAdmin));
         }
+        if (!await roleManager.RoleExistsAsync(RoleNames.TenantUser))
+        {
+            await roleManager.CreateAsync(new IdentityRole(RoleNames.TenantUser));
+        }
 
         await dbContext.SaveChangesAsync(cancellationToken);
 

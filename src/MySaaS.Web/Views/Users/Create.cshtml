@@ -1,0 +1,40 @@
+@model MySaaS.Web.Models.UserCreateViewModel
+
+@{
+    ViewData["Title"] = "Add user";
+}
+
+<h1>Add user</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoleName"></label>
+        <select asp-for="RoleName" class="form-control" asp-items="Model.Roles">
+            <option value="">Select role</option>
+        </select>
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+    </div>
+
+    @if (Model.Tenants.Count > 0)
+    {
+        <div class="form-group">
+            <label asp-for="TenantId"></label>
+            <select asp-for="TenantId" class="form-control" asp-items="Model.Tenants">
+                <option value="">Select tenant</option>
+            </select>
+            <span asp-validation-for="TenantId" class="text-danger"></span>
+        </div>
+    }
+
+    <button type="submit" class="button">Create user</button>
+</form>
