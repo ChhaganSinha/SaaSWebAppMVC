@@ -16,7 +16,7 @@
                 <a href="@Url.Action("Index", "Tenants")">Tenants</a>
                 <a href="@Url.Action("Index", "Plans")">Plans</a>
             }
-            @if (User?.IsInRole(RoleNames.SuperAdmin) ?? false || User?.IsInRole(RoleNames.TenantAdmin) ?? false)
+            @if ((User?.IsInRole(RoleNames.SuperAdmin) ?? false) || (User?.IsInRole(RoleNames.TenantAdmin) ?? false))
             {
                 <a href="@Url.Action("Index", "Subscriptions")">Subscriptions</a>
             }
