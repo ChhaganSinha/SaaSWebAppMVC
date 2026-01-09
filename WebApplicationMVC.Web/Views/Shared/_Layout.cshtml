@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject IPageAccessService PageAccessService
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,6 +26,38 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (PageAccessService.HasAccess(User.Identity?.Name, "Home/Edit", AccessLevel.Edit))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Edit">Edit</a>
+                            </li>
+                        }
+                        @if (PageAccessService.HasAccess(User.Identity?.Name, "Home/Admin", AccessLevel.Full))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Admin">Full Access</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <span class="navbar-text me-3">Signed in as @User.Identity?.Name</span>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-link nav-link text-dark">Sign Out</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Sign In</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

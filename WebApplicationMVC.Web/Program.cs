@@ -2,6 +2,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<WebApplicationMVC.Web.Authorization.PageAccessOptions>(
+    builder.Configuration.GetSection("PageAccess"));
+builder.Services.AddScoped<WebApplicationMVC.Web.Authorization.IPageAccessService,
+    WebApplicationMVC.Web.Authorization.PageAccessService>();
+builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+    });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -18,6 +29,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

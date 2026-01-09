@@ -1,0 +1,27 @@
+@model WebApplicationMVC.Web.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="mb-3">Sign In</h1>
+        <p class="text-muted">Select a user to see their page access level.</p>
+
+        <form asp-action="Login" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <select asp-for="UserName" class="form-select" asp-items="@(new SelectList(Model.AvailableUsers))">
+                    <option value="">Select a user</option>
+                </select>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

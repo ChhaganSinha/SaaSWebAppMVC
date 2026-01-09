@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using WebApplicationMVC.Web.Authorization;
 using WebApplicationMVC.Web.Models;
 
 namespace WebApplicationMVC.Web.Controllers
@@ -13,12 +14,26 @@ namespace WebApplicationMVC.Web.Controllers
             _logger = logger;
         }
 
+        [PageAccess(AccessLevel.View)]
         public IActionResult Index()
         {
             return View();
         }
 
+        [PageAccess(AccessLevel.View)]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [PageAccess(AccessLevel.Edit)]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        [PageAccess(AccessLevel.Full)]
+        public IActionResult Admin()
         {
             return View();
         }
