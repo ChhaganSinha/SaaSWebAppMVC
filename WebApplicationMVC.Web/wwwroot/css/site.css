@@ -18,5 +18,105 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin: 0;
+  background-color: #f4f5f7;
+  color: #212529;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  border-right: 1px solid #dee2e6;
+  padding: 1.5rem 1rem;
+}
+
+.app-sidebar__brand {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.app-sidebar__brand a {
+  text-decoration: none;
+  color: #212529;
+}
+
+.app-sidebar__nav .nav-link {
+  color: #495057;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.app-sidebar__nav .nav-link:hover,
+.app-sidebar__nav .nav-link:focus {
+  background-color: #f1f3f5;
+  color: #212529;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.app-header__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-header__icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.app-header__profile-name {
+  font-weight: 500;
+}
+
+.app-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.app-footer {
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+}
+
+@media (max-width: 991px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
 }
