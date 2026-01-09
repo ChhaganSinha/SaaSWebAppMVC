@@ -1,0 +1,44 @@
+@model List<MySaaS.Domain.Entities.Subscription>
+
+@{
+    ViewData["Title"] = "Subscriptions";
+}
+
+<div class="card">
+    <div class="actions">
+        <a class="button" href="@Url.Action("Create")">Add Subscription</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tenant</th>
+                <th>Plan</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subscription in Model)
+            {
+                <tr>
+                    <td>@subscription.Tenant?.Name</td>
+                    <td>@subscription.SubscriptionPlan?.Name</td>
+                    <td>@subscription.Status</td>
+                    <td>@subscription.StartDate</td>
+                    <td>@(subscription.EndDate?.ToString() ?? "-")</td>
+                    <td>
+                        <div class="actions">
+                            <a class="button secondary" href="@Url.Action("Edit", new { id = subscription.Id })">Edit</a>
+                            <form method="post" action="@Url.Action("Cancel", new { id = subscription.Id })">
+                                @Html.AntiForgeryToken()
+                                <button class="button danger" type="submit">Cancel</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,42 @@
+@model List<MySaaS.Domain.Entities.Tenant>
+
+@{
+    ViewData["Title"] = "Tenants";
+}
+
+<div class="card">
+    <div class="actions">
+        <a class="button" href="@Url.Action("Create")">Add Tenant</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tenant in Model)
+            {
+                <tr>
+                    <td>@tenant.Name</td>
+                    <td>@tenant.Slug</td>
+                    <td>@tenant.ContactEmail</td>
+                    <td>@(tenant.IsActive ? "Active" : "Inactive")</td>
+                    <td>
+                        <div class="actions">
+                            <a class="button secondary" href="@Url.Action("Edit", new { id = tenant.Id })">Edit</a>
+                            <form method="post" action="@Url.Action("Delete", new { id = tenant.Id })">
+                                @Html.AntiForgeryToken()
+                                <button class="button danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

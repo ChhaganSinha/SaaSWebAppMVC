@@ -1,0 +1,47 @@
+@model SubscriptionEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Subscription";
+}
+
+<div class="card">
+    <h2>Edit Subscription</h2>
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-grid">
+            <div class="form-field">
+                <label>Tenant</label>
+                <select name="TenantId" asp-for="Form.TenantId">
+                    @foreach (var tenant in Model.Tenants)
+                    {
+                        <option value="@tenant.Id" selected="@(tenant.Id == Model.Form.TenantId)">@tenant.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Form.TenantId"></span>
+            </div>
+            <div class="form-field">
+                <label>Plan</label>
+                <select name="SubscriptionPlanId" asp-for="Form.SubscriptionPlanId">
+                    @foreach (var plan in Model.Plans)
+                    {
+                        <option value="@plan.Id" selected="@(plan.Id == Model.Form.SubscriptionPlanId)">@plan.Name (@plan.PricePerMonth.ToString("C"))</option>
+                    }
+                </select>
+                <span asp-validation-for="Form.SubscriptionPlanId"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Form.StartDate"></label>
+                <input asp-for="Form.StartDate" type="date" />
+                <span asp-validation-for="Form.StartDate"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Form.EndDate"></label>
+                <input asp-for="Form.EndDate" type="date" />
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="button" type="submit">Update</button>
+            <a class="button secondary" href="@Url.Action("Index")">Cancel</a>
+        </div>
+    </form>
+</div>
