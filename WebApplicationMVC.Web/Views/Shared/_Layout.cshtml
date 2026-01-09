@@ -13,30 +13,83 @@
     <div class="app-layout">
         <aside class="app-sidebar">
             <div class="app-sidebar__brand">
-                <a asp-area="" asp-controller="Home" asp-action="Index">WebApplicationMVC.Web</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="app-sidebar__logo" aria-hidden="true">WA</span>
+                    <span class="app-sidebar__brand-text">
+                        WebApplicationMVC
+                        <span class="app-sidebar__brand-subtitle">Workspace Hub</span>
+                    </span>
+                </a>
             </div>
             <nav class="app-sidebar__nav">
+                <div class="app-sidebar__section-label">Main</div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                            <span class="app-sidebar__nav-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6a.5.5 0 1 0 .708.708L2.5 7.707V14.5A1.5 1.5 0 0 0 4 16h2.5v-4.5h3V16H12a1.5 1.5 0 0 0 1.5-1.5V7.707l.146.147a.5.5 0 0 0 .708-.708l-6-6z"/>
+                                </svg>
+                            </span>
+                            Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <span class="app-sidebar__nav-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path d="M8 0c-.69 0-1.36.072-2 .21V4a2 2 0 1 0 4 0V.21A8.09 8.09 0 0 0 8 0zm3.5 2.069V4a3.5 3.5 0 0 1-7 0V2.069A8 8 0 1 0 11.5 2.07z"/>
+                                </svg>
+                            </span>
+                            Privacy
+                        </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="app-sidebar__nav-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path d="M8.985 1.566a1 1 0 0 0-1.97 0l-.2 1.333a1 1 0 0 1-.79.832l-1.35.27a1 1 0 0 0-.52 1.715l.99.99a1 1 0 0 1 .287.89l-.27 1.35a1 1 0 0 0 1.715.52l.99-.99a1 1 0 0 1 .89-.287l1.35.27a1 1 0 0 0 1.165-1.165l-.27-1.35a1 1 0 0 1 .287-.89l.99-.99a1 1 0 0 0-.52-1.715l-1.35-.27a1 1 0 0 1-.79-.832l-.2-1.333zM8 10.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                                </svg>
+                            </span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+                <div class="app-sidebar__section-label">Access</div>
+                <ul class="nav flex-column">
                     @if (PageAccessService.HasAccess(User.Identity?.Name, "Home/Edit", AccessLevel.Edit))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Edit">Edit</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Edit">
+                                <span class="app-sidebar__nav-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706l-1.02 1.02-2.121-2.122 1.02-1.02a.5.5 0 0 1 .707 0l1.414 1.416zM13.06 4.56 3 14.621V16h1.379L14.44 5.94 13.06 4.56zM2 13.621 11.94 3.68 9.819 1.56 2 9.379v4.242z"/>
+                                    </svg>
+                                </span>
+                                Edit
+                            </a>
                         </li>
                     }
                     @if (PageAccessService.HasAccess(User.Identity?.Name, "Home/Admin", AccessLevel.Full))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Admin">Full Access</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Admin">
+                                <span class="app-sidebar__nav-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M8 0a5 5 0 0 0-5 5v2H2a1 1 0 0 0-1 1v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1h-1V5a5 5 0 0 0-5-5zm3 7H5V5a3 3 0 0 1 6 0v2z"/>
+                                    </svg>
+                                </span>
+                                Full Access
+                            </a>
                         </li>
                     }
                 </ul>
             </nav>
+            <div class="app-sidebar__promo">
+                <div class="app-sidebar__promo-title">Need help?</div>
+                <p>Visit the knowledge base or contact support for quick onboarding.</p>
+                <button class="btn btn-light app-sidebar__promo-button" type="button">Open Support</button>
+            </div>
         </aside>
         <div class="app-main">
             <header class="app-header">
