@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MySaaS.Application.Interfaces;
 using MySaaS.Web.Models;
 
 namespace MySaaS.Web.Controllers;
 
+[Authorize]
 public class HomeController(
     ITenantService tenantService,
     IPlanService planService,
