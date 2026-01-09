@@ -2,8 +2,13 @@ using Microsoft.AspNetCore.Identity;
 using MySaaS.Infrastructure.Data;
 using MySaaS.Infrastructure.Extensions;
 using MySaaS.Infrastructure.Identity;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, services, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSaaSInfrastructure(builder.Configuration);
