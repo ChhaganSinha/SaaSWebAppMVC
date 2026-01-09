@@ -1,0 +1,53 @@
+@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="card">
+    <h1>MySaaS Operations Dashboard</h1>
+    <p>Monitor tenants, subscription plans, and active subscriptions.</p>
+</div>
+
+<div class="card">
+    <h2>Overview</h2>
+    <div class="form-grid">
+        <div>
+            <h3>@Model.Tenants.Count</h3>
+            <p>Total tenants</p>
+        </div>
+        <div>
+            <h3>@Model.Plans.Count</h3>
+            <p>Available plans</p>
+        </div>
+        <div>
+            <h3>@Model.Subscriptions.Count</h3>
+            <p>Subscriptions</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Recent Subscriptions</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tenant</th>
+                <th>Plan</th>
+                <th>Status</th>
+                <th>Start Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subscription in Model.Subscriptions.Take(5))
+            {
+                <tr>
+                    <td>@subscription.Tenant?.Name</td>
+                    <td>@subscription.SubscriptionPlan?.Name</td>
+                    <td>@subscription.Status</td>
+                    <td>@subscription.StartDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
