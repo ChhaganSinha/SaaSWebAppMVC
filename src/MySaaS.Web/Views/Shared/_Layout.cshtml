@@ -19,6 +19,7 @@
             @if ((User?.IsInRole(RoleNames.SuperAdmin) ?? false) || (User?.IsInRole(RoleNames.TenantAdmin) ?? false))
             {
                 <a href="@Url.Action("Index", "Subscriptions")">Subscriptions</a>
+                <a href="@Url.Action("Index", "Users")">Users</a>
             }
             <div class="nav-auth">
                 @if (User?.Identity?.IsAuthenticated ?? false)
