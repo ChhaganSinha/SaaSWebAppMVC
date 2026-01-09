@@ -11,9 +11,29 @@
         <nav class="nav">
             <div class="logo">MySaaS</div>
             <a href="@Url.Action("Index", "Home")">Dashboard</a>
-            <a href="@Url.Action("Index", "Tenants")">Tenants</a>
-            <a href="@Url.Action("Index", "Plans")">Plans</a>
-            <a href="@Url.Action("Index", "Subscriptions")">Subscriptions</a>
+            @if (User?.IsInRole(RoleNames.SuperAdmin) ?? false)
+            {
+                <a href="@Url.Action("Index", "Tenants")">Tenants</a>
+                <a href="@Url.Action("Index", "Plans")">Plans</a>
+            }
+            @if (User?.IsInRole(RoleNames.SuperAdmin) ?? false || User?.IsInRole(RoleNames.TenantAdmin) ?? false)
+            {
+                <a href="@Url.Action("Index", "Subscriptions")">Subscriptions</a>
+            }
+            <div class="nav-auth">
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <span class="nav-user">@User.Identity?.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Account")">Login</a>
+                }
+            </div>
         </nav>
     </header>
     <main class="container">

@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MySaaS.Application.Interfaces;
 using MySaaS.Domain.Entities;
+using MySaaS.Infrastructure.Identity;
 using MySaaS.Web.Models;
 
 namespace MySaaS.Web.Controllers;
 
+[Authorize(Roles = RoleNames.SuperAdmin)]
 public class TenantsController(ITenantService tenantService) : Controller
 {
     public async Task<IActionResult> Index(CancellationToken cancellationToken)

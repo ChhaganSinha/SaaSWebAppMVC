@@ -28,6 +28,36 @@ body {
     margin-right: 24px;
 }
 
+.nav-auth {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-user {
+    color: #e5e7eb;
+    font-weight: 600;
+}
+
+.nav-auth form {
+    margin: 0;
+}
+
+.nav-auth button {
+    background: transparent;
+    color: #e5e7eb;
+    border: 1px solid #374151;
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.muted {
+    color: #6b7280;
+}
+
 .container {
     padding: 32px;
     max-width: 1100px;
@@ -40,6 +70,33 @@ body {
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
     padding: 20px;
     margin-bottom: 20px;
+}
+
+.badge-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.badge-primary {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.badge-secondary {
+    background: #0f766e;
+    color: #ffffff;
 }
 
 .table {
@@ -96,6 +153,37 @@ body {
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid #d1d5db;
+}
+
+.form-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    padding: 24px;
+    max-width: 420px;
+}
+
+.form-card h1 {
+    margin-top: 0;
+}
+
+.form-card form {
+    display: grid;
+    gap: 12px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-hint {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 13px;
+    color: #4b5563;
 }
 
 .form-actions {
