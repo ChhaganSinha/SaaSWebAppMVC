@@ -7,6 +7,16 @@
 <div class="card">
     <h1>MySaaS Operations Dashboard</h1>
     <p>Monitor tenants, subscription plans, and active subscriptions.</p>
+    <div class="badge-row">
+        @if (User?.IsInRole(RoleNames.SuperAdmin) ?? false)
+        {
+            <span class="badge badge-primary">Super Admin</span>
+        }
+        @if (User?.IsInRole(RoleNames.TenantAdmin) ?? false)
+        {
+            <span class="badge badge-secondary">Tenant Admin</span>
+        }
+    </div>
 </div>
 
 <div class="card">
